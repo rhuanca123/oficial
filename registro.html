@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIENTES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .form-container {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"], input[type="button"] {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #45a049;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #da190b;
+        }
+
+        .profile-img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">CLIENTES</h1>
+
+    <table>
+        <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>telefono</th>
+            <th>correo</th>
+            <th>Mostrar</th>
+        </tr>
+        <tr>
+            <td><img src="img/tur.jpg" alt="Imagen de perfil" class="profile-img"></td>
+            <td>JUAN ROBLES</td>
+            <td>60456678</td>
+            <td>juanrobles@gmail.com</td>
+            <td><button onclick="eliminarEstudiante(this)" class="btn-delete">Eliminar</button></td>
+        </tr>
+    </table>
+
+    <div class="form-container">
+        <form id="formularioEstudiante">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="edad">celular:</label>
+            <input type="number" id="edad" name="telefono" required>
+
+            <label for="grado">correo:</label>
+            <input type="text" id="grado" name="correo" required>
+
+            <input type="button" class="btn-submit" value="Agregar " onclick="agregarEstudiante()">
+        </form>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html" class="btn-submit">Volver </a>
+    </div>
+
+    <script>
+        function agregarEstudiante() {
+            var nombre = document.getElementById("nombre").value;
+            var edad = document.getElementById("edad").value;
+            var grado = document.getElementById("grado").value;
+
+            var tabla = document.querySelector("table");
+            var fila = tabla.insertRow();
+
+            var celdaFoto = fila.insertCell(0);
+            var celdaNombre = fila.insertCell(1);
+            var celdaEdad = fila.insertCell(2);
+            var celdaGrado = fila.insertCell(3);
+            var celdaBoton = fila.insertCell(4);
+
+            celdaFoto.innerHTML = '<img src="img/adt.ico" alt="Imagen de perfil" class="profile-img">';
+            celdaNombre.innerHTML = nombre;
+            celdaEdad.innerHTML = edad;
+            celdaGrado.innerHTML = grado;
+            celdaBoton.innerHTML = '<button onclick="eliminar(this)" class="btn-delete">Eliminar</button>';
+        }
+
+        function eliminarEstudiante(boton) {
+            var fila = boton.parentNode.parentNode;
+            fila.parentNode.removeChild(fila);
+        }
+    </script>
+</body>
+</html>

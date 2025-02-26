@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIENTES</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <style>
+        .profile-img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">CLIENTES</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="img/tur.jpg" alt="Imagen de perfil" class="profile-img"></td>
+                    <td>robert</td>
+                    <td>17</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-container">
+            <form id="formularioEstudiante">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edad">Celular:</label>
+                    <input type="number" id="edad" name="telefono" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="grado">Correo:</label>
+                    <input type="text" id="grado" name="correo" class="form-control" required>
+                </div>
+
+                <button type="button" class="btn btn-success" onclick="agregarEstudiante()">Agregar</button>
+            </form>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="index.html" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
+
+    <script src="js/jquery.min(1).js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        function agregarEstudiante() {
+            var nombre = document.getElementById("nombre").value;
+            var edad = document.getElementById("edad").value;
+            var grado = document.getElementById("grado").value;
+
+            var tabla = document.querySelector("table tbody");
+
+            var nuevaFila = `
+                <tr>
+                    <td><img src="img/adt.ico" alt="Imagen de perfil" class="profile-img"></td>
+                    <td>${nombre}</td>
+                    <td>${edad}</td>
+                    <td>${grado}</td>
+                </tr>
+            `;
+
+            tabla.innerHTML += nuevaFila;
+        }
+    </script>
+</body>
+</html>
